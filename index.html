@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIT Library Self-Service Kiosk</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="viewport">
+<main class="stage" id="stage">
+  <header class="hdr">
+    <figure class="art logo" data-label="vit-logo.png"><img src="vitlogo.png" alt="VIT emblem"></figure>
+    <p class="brand">VIT LIBRARY<br>SELF-SERVICE KIOSK</p>
+    <p class="who" id="who" hidden><strong>WELCOME</strong><span id="whoId"></span></p>
+    <div class="divider"></div>
+  </header>
+
+  <section class="screen" id="s-welcome" data-screen="welcome" aria-labelledby="h-welcome">
+    <figure class="art p" style="left:20px;top:270px;width:421px;height:421px" data-label="books-stack.png"><img src="book.png" alt="Watercolor stack of books"></figure>
+    <h1 class="p t-right" id="h-welcome" tabindex="-1" style="left:539px;top:377px;width:831px">Welcome to VIT Library</h1>
+    <p class="p t-right sub" style="left:539px;top:450px;width:831px">Borrow your books quickly using our self-service kiosk.</p>
+    <button class="btn p" id="btn-issue" style="left:1055px;top:577px">ISSUE BOOK</button>
+  </section>
+
+  <section class="screen" id="s-identity" data-screen="identity" aria-labelledby="h-identity" hidden>
+    <figure class="art p" style="left:-41px;top:209px;width:508px;height:508px" data-label="face-verification-device.png"><img src="biometric.png" alt="Face-verification device"></figure>
+    <h1 class="p ident" id="h-identity" tabindex="-1" style="left:412px;top:260px;width:580px">Please show your face on the device<br>Identity verification</h1>
+    <p class="p note" id="verify-note" style="left:412px;top:360px;width:580px">Verifying (simulated)…</p>
+    <button class="btn p" id="btn-back-id" style="left:1092px;top:748px">BACK</button>
+  </section>
+
+  <section class="screen" id="s-place" data-screen="place" aria-labelledby="h-place" hidden>
+    <h1 class="p t-center" id="h-place" tabindex="-1" style="left:402px;top:198px;width:849px">PLEASE PLACE YOUR BOOK HERE</h1>
+    <div class="p tablewrap" style="left:402px;top:268px;width:849px">
+      <table class="tbl"><caption class="sr">Scanned books</caption>
+        <thead><tr><th scope="col">S.No</th><th scope="col">Item No</th><th scope="col">Title</th></tr></thead>
+        <tbody id="scan-body"></tbody></table>
+    </div>
+    <button class="scanner p" id="btn-scan" aria-label="Book scanner: activate to scan a book (simulated)" style="left:20px;top:400px;width:217px;height:300px">
+      <figure class="art" data-label="book-scanner.png"><img src="bookscanner.png" alt=""></figure></button>
+    <p class="p counter" id="counter" style="left:1092px;top:692px">Scanned:0</p>
+    <button class="btn p" id="btn-confirm" style="left:788px;top:748px" hidden>CONFIRM</button>
+    <button class="btn p" id="btn-back-place" style="left:1092px;top:748px">BACK</button>
+  </section>
+
+  <section class="screen" id="s-result" data-screen="result" aria-labelledby="h-result" hidden>
+    <h1 class="p t-center" id="h-result" tabindex="-1" style="left:56px;top:198px;width:1200px">Book Issue Details</h1>
+    <div class="p tablewrap" style="left:56px;top:268px;width:1200px">
+      <table class="tbl"><caption class="sr">Book issue result</caption>
+        <thead><tr><th scope="col">S.No</th><th scope="col">Item No</th><th scope="col">Title</th><th scope="col">Due Date</th><th scope="col">Result</th><th scope="col">Remarks</th></tr></thead>
+        <tbody id="res-body"></tbody></table>
+    </div>
+    <figure class="art p" style="left:20px;top:500px;width:340px;height:340px" data-label="books-stack.png"><img src="book.png" alt="Watercolor stack of books"></figure>
+    <svg class="p bigx" id="bigx" role="img" aria-label="Failure: book could not be issued" viewBox="0 0 100 100" style="left:640px;top:480px;width:180px;height:180px" hidden><path d="M12 12 L88 88 M88 12 L12 88" stroke="#E8301E" stroke-width="16" stroke-linecap="round"/></svg>
+    <button class="btn p" id="btn-exit" style="left:1092px;top:748px">EXIT</button>
+  </section>
+
+  <section class="screen" id="s-thanks" data-screen="thanks" aria-labelledby="h-thanks" hidden>
+    <figure class="art p" style="left:20px;top:270px;width:421px;height:421px" data-label="books-stack.png"><img src="book.png" alt="Watercolor stack of books"></figure>
+    <h1 class="p thanks" id="h-thanks" tabindex="-1" style="left:560px;top:430px;width:700px">THANK YOU</h1>
+  </section>
+</main>
+</div>
+
+<aside class="demo" id="demo" hidden aria-label="Demo controls (simulated)">
+  <strong>Demo</strong>
+  <label><input type="radio" name="sc" value="eligible" checked> Eligible book</label>
+  <label><input type="radio" name="sc" value="restricted"> Restricted book</label>
+  <label><input type="checkbox" id="d-ref"> Reference-fixture mode</label>
+  <button id="d-scan">Simulate scan</button>
+  <button id="d-reset">Reset session</button>
+</aside>
+<div class="sr" id="live" aria-live="polite" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+:root{--bg:#F4E7CC;--navy:#243B64;--red:#FF2C2C;--brown:#6D4C41;--ok:#8CE57F;--fail:#E8301E;
+--font:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--fs-lg:32px;--fs-tbl:20px;--fs-cnt:24px;
+--r:12px;--sh:0 4px 10px rgba(0,0,0,.18);--sh-t:0 2px 8px rgba(0,0,0,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);font-family:var(--font);color:var(--navy);overflow:hidden}
+body{display:flex;flex-direction:column}
+#viewport{flex:1;position:relative;overflow:hidden}
+.stage{position:absolute;top:0;left:0;width:1440px;height:900px;transform-origin:top left;background:var(--bg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+.hdr{position:absolute;inset:0 0 auto 0;height:141px;z-index:2}
+.logo{position:absolute;left:26px;top:22px;width:80px;height:80px;margin:0}
+.brand{position:absolute;left:114px;top:32px;margin:0;font-size:var(--fs-lg);line-height:1.15}
+.who{position:absolute;right:70px;top:32px;margin:0;text-align:right;font-size:var(--fs-lg);line-height:1.15;display:flex;flex-direction:column}
+.who span{font-size:24px;font-weight:500}
+.divider{position:absolute;left:26px;top:134px;width:1390px;height:7px;background:#fff}
+.screen{position:absolute;inset:0}
+.p{position:absolute;margin:0}
+.art{margin:0}.art img{width:100%;height:100%;object-fit:contain;display:block}
+.art.missing{border:2px dashed var(--navy);display:grid;place-items:center;font-size:16px;text-align:center;opacity:.6}
+.art.missing img{display:none}.art.missing::after{content:attr(data-label)}
+h1{font-size:var(--fs-lg);font-weight:700;margin:0;line-height:1.2}
+.t-right{text-align:right}.t-center{text-align:center;color:#000}
+.sub{font-size:20px}
+.ident{text-align:center;font-size:24px;font-weight:600;color:var(--brown);line-height:1.4}
+.note{text-align:center;font-size:18px;color:var(--brown)}
+.btn{width:280px;height:90px;min-height:44px;border:0;border-radius:var(--r);background:var(--navy);color:#fff;font:600 var(--fs-lg)/1 var(--font);box-shadow:var(--sh);cursor:pointer}
+.btn:disabled{opacity:.6;cursor:default}
+button:focus-visible{outline:4px solid #E08A00;outline-offset:3px}
+h1:focus{outline:none}
+.scanner{background:none;border:0;padding:0;cursor:pointer;border-radius:var(--r)}
+.scanner .art{width:100%;height:100%}
+.counter{color:var(--red);font-size:var(--fs-cnt);font-weight:500}
+.tablewrap{background:#fff;border-radius:var(--r);box-shadow:var(--sh-t);overflow:hidden;color:#000}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs-tbl);table-layout:fixed}
+.tbl th,.tbl td{height:55px;padding:0 14px;text-align:left;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbl th{font-weight:600}
+.tbl th:first-child,.tbl td:first-child{width:90px}
+#s-place .tbl th:nth-child(2),#s-place .tbl td:nth-child(2){width:150px}
+#s-result .tbl th:nth-child(2){width:130px}
+#s-result .tbl th:nth-child(4){width:170px}#s-result .tbl th:nth-child(5){width:140px}
+.row-ok td{background:var(--ok)}.row-fail td{background:var(--fail);color:#fff}
+.thanks{font-size:48px;color:#000;text-align:center}
+.demo{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:8px 14px;background:#fff;border-top:2px solid var(--navy);font:14px var(--font)}
+.demo button{min-height:32px;padding:0 12px}
+@media (prefers-reduced-motion:no-preference){.screen{animation:in .2s ease-out}@keyframes in{from{opacity:0}}}
+@media (max-width:899px){
+ html,body{overflow:auto;height:auto}#viewport{overflow:visible}
+ .stage{position:static;width:auto;height:auto;transform:none!important;padding-bottom:24px}
+ .hdr{position:static;height:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:16px}
+ .logo,.brand,.who,.divider{position:static}.logo{width:56px;height:56px}
+ .brand{font-size:18px}.who{margin-left:auto;font-size:18px}.who span{font-size:16px}.divider{width:100%;height:5px}
+ .screen{position:static;display:flex;flex-direction:column;align-items:center;gap:16px;padding:16px}
+ .p{position:static!important;width:auto!important;max-width:100%}
+ .art.p,.art{width:min(70vw,320px)!important;height:auto!important;aspect-ratio:1}
+ .scanner{width:min(50vw,217px)!important;height:auto!important;aspect-ratio:217/300}
+ .scanner .art{width:100%!important}
+ h1{font-size:24px}.t-right,.ident{text-align:center}.tablewrap{width:100%!important;overflow-x:auto}.tbl{min-width:640px}
+ .btn{width:min(100%,280px)!important;height:64px}.bigx{width:120px!important;height:120px!important}.thanks{font-size:36px}}
